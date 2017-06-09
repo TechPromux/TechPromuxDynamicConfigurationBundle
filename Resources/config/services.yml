@@ -1,0 +1,57 @@
+imports:
+    - { resource: 'services_types.yml'}
+
+services:
+#    tech_promux_configuration.example:
+#        class: TechPromux\Bundle\ConfigurationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    # Utils Services
+
+    #techpromux_configuration.configurator:
+    #    class: TechPromux\Bundle\ConfigurationBundle\Manager\CustomConfigurationReader
+    #    tags:
+    #        - { name: techpromux_configuration.configurator}
+    #    calls:
+    #        - [ setConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+
+    # Manager Services
+
+    techpromux_configuration.manager.custom_configuration:
+        class: TechPromux\Bundle\ConfigurationBundle\Manager\CustomConfigurationManager
+        arguments: [~]
+        tags:
+            - { name: techpromux.entity_manager}
+        calls:
+            - [ setServiceContainer,['@service_container']]
+
+    techpromux_configuration.manager.owner_configuration:
+        class: TechPromux\Bundle\ConfigurationBundle\Manager\OwnerConfigurationManager
+        arguments: [~]
+        tags:
+            - { name: techpromux.entity_manager}
+        calls:
+            - [ setServiceContainer,['@service_container']]
+            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+
+    techpromux_configuration.manager.configurator:
+        class: TechPromux\Bundle\ConfigurationBundle\Manager\ConfiguratorManager
+        arguments: [~]
+        calls:
+            - [ setServiceContainer,['@service_container']]
+            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+            - [ setOwnerConfigurationManager,['@techpromux_configuration.manager.owner_configuration']]
+
+    # Admin Services
+
+    techpromux_configuration.admin.custom_configuration:
+        class: TechPromux\Bundle\ConfigurationBundle\Admin\CustomConfigurationAdmin
+        arguments: [~, TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: techpromux_configurations_admin, label: 'General Configurations'}
+
+    techpromux_configuration.admin.owner_configuration:
+        class: TechPromux\Bundle\ConfigurationBundle\Admin\OwnerConfigurationAdmin
+        arguments: [~, TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: techpromux_configurations_admin, label: 'Owner Configurations', show_in_dashboard: true}

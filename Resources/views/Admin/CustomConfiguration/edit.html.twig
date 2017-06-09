@@ -1,0 +1,97 @@
+{% extends "TechPromuxBaseBundle:Admin:Resource/edit.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        div.checkbox span.control-label__text {
+            margin-left: 5px;
+        }
+
+        div.radio span.control-label__text {
+            margin-left: 5px;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        function init_inner_items_{{ form.vars.id }}(container, initial=true) {
+
+            var labels = $(container).find('label[data-ctype-modify="parent"]');
+
+            for (var i = 0; i < labels.length; i++) {
+                $(labels[i]).parent().addClass($(labels[i]).attr('data-ctype-modify-parent-addclass'));
+            }
+
+            $(container).find('textarea.wysihtml5' + (initial ? '' : ':last')).wysihtml5();
+            $(container).find('ul.wysihtml5-toolbar' + (initial ? '' : ':last') + ' li a[data-wysihtml5-command="insertImage"],ul.wysihtml5-toolbar li a[data-wysihtml5-command="createLink"]').parent().hide();
+
+            $(container).find('input.date-picker' + (initial ? '' : ':last')).parent().datetimepicker({
+                useSeconds: true,
+                pickDate: true,
+                pickTime: false,
+                format: 'YYYY-MM-DD'
+            });
+
+            $(container).find('input.datetime-picker' + (initial ? '' : ':last')).parent().datetimepicker({
+                useSeconds: true,
+                pickDate: true,
+                pickTime: true,
+                format: 'YYYY-MM-DD HH:mm:ss'
+            });
+
+            $(container).find('input.time-picker' + (initial ? '' : ':last')).parent().datetimepicker({
+                useSeconds: true,
+                pickDate: false,
+                pickTime: true,
+                format: 'HH:mm:ss'
+            });
+
+            $(container).find('input.color-picker' + (initial ? '' : ':last')).parent().addClass('input-group colorpicker-component').append('<span class="input-group-addon" style="background-color: #eee;"><i></i></span>').colorpicker({format: 'rgb'});
+
+            $(container).find('input.color-picker-rgb' + (initial ? '' : ':last')).parent().addClass('input-group colorpicker-component').append('<span class="input-group-addon" style="background-color: #eee;"><i></i></span>').colorpicker({format: 'rgb'});
+
+            $(container).find('input.color-picker-rgba' + (initial ? '' : ':last')).parent().addClass('input-group colorpicker-component').append('<span class="input-group-addon" style="background-color: #eee;"><i></i></span>').colorpicker({format: 'rgba'});
+
+            var class_value = $(container).find('ul.radio-horizontal-modify-radio-content').attr('data-ctype-modify-radio-content-addclass');
+            $.each($(container).find('ul.radio-horizontal-modify-radio-content div.radio'), function(id, el){
+                $(el).addClass(class_value);
+            });
+        }
+
+        $(document).on('sonata-collection-item-added', '#sonata-ba-field-container-{{ form.vars.id }}_customValue', function () {
+
+            init_inner_items_{{ form.vars.id }}(this, false);
+
+        });
+
+        $(document).on('sonata-collection-item-added', '#sonata-ba-field-container-{{ form.vars.id }}_settings', function () {
+
+            init_inner_items_{{ form.vars.id }}(this, false);
+
+        });
+
+        $(document).ready(function () {
+
+            if ($('#{{ form.vars.id }}_type').children().length > 0) {
+                $('#{{ form.vars.id }}_type').addClass('row');
+                $('#{{ form.vars.id }}_type').children().each(function (id, el) {
+                    $(el).find('label').css({'padding-left': '0px'});
+                    var text = $(el).find('span').html();
+                    if (text.length > 25)
+                        $(el).addClass('col-md-6 col-sm-6');
+                    else
+                        $(el).addClass('col-md-4 col-sm-4');
+                });
+            }
+
+            $('#{{ form.vars.id }}_customValue').addClass('row').css({'margin-left': '0px', 'margin-right': '0px'});
+            $('#sonata-ba-field-container-{{ form.vars.id }}_customValue img.media-object').parent().parent().removeClass('col-lg-9').addClass('col-lg-12');
+
+            init_inner_items_{{ form.vars.id }}($('#sonata-ba-field-container-{{ form.vars.id }}_customValue'), true);
+            init_inner_items_{{ form.vars.id }}($('#sonata-ba-field-container-{{ form.vars.id }}_settings'), true);
+        });
+    </script>
+{% endblock javascripts %}
