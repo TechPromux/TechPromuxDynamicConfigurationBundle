@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\DependencyInjection;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

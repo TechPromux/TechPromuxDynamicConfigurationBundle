@@ -1,9 +1,9 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Manager;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
 
 use TechPromux\Bundle\BaseBundle\Manager\Resource\BaseResourceManager;
-use TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration;
 
 /**
  * ConfigurationManager
@@ -12,7 +12,7 @@ use TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration;
 class OwnerConfigurationManager extends BaseResourceManager {
 
     public function getBundleName() {
-        return 'TechPromuxConfigurationBundle';
+        return 'TechPromuxDynamicConfigurationBundle';
     }
 
     public function getMediaContextId()

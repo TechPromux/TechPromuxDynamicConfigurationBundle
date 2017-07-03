@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Controller;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('TechPromuxConfigurationBundle:Default:index.html.twig');
+        return $this->render('TechPromuxDynamicConfigurationBundle:Default:index.html.twig');
     }
 }

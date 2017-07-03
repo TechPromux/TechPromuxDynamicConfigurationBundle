@@ -1,11 +1,11 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Entity;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResource;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResourceOwner;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\HasBaseResourceOwner;
+use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\ResourceOwner;
+use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\HasResourceOwner;
 
 /**
  * OwnerConfiguration
@@ -13,7 +13,7 @@ use TechPromux\Bundle\BaseBundle\Entity\Resource\HasBaseResourceOwner;
  * @ORM\Table(name="techpromux_configuration_owner_configuration")
  * @ORM\Entity()
  */
-class OwnerConfiguration extends BaseResource implements HasBaseResourceOwner
+class OwnerConfiguration extends BaseResource implements HasResourceOwner
 {
 
     /**
@@ -32,7 +32,7 @@ class OwnerConfiguration extends BaseResource implements HasBaseResourceOwner
     protected $media;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration", inversedBy="ownerConfigurations")
+     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration", inversedBy="ownerConfigurations")
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id", nullable=false)
      */
     private $configuration;
@@ -50,11 +50,11 @@ class OwnerConfiguration extends BaseResource implements HasBaseResourceOwner
     /**
      * Set configuration
      *
-     * @param \TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration $configuration
+     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration $configuration
      *
      * @return OwnerConfiguration
      */
-    public function setConfiguration(\TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration $configuration)
+    public function setConfiguration(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration $configuration)
     {
         $this->configuration = $configuration;
 
@@ -64,7 +64,7 @@ class OwnerConfiguration extends BaseResource implements HasBaseResourceOwner
     /**
      * Get configuration
      *
-     * @return \TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration
+     * @return \TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration
      */
     public function getConfiguration()
     {
@@ -83,7 +83,7 @@ class OwnerConfiguration extends BaseResource implements HasBaseResourceOwner
      * @param ConfigurationResourceOwner $owner
      * @return OwnerConfiguration
      */
-    public function setOwner(BaseResourceOwner $owner = null)
+    public function setOwner(ResourceOwner $owner = null)
     {
         $this->owner = $owner;
         return $this;

@@ -6,18 +6,15 @@
  * Time: 00:29
  */
 
-namespace TechPromux\Bundle\ConfigurationBundle\Manager;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
 
 
-use TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration;
-use TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration;
+use TechPromux\Bundle\BaseBundle\Manager\BaseManager;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration;
 
-class ConfiguratorManager
+class ConfiguratorManager extends BaseManager
 {
-    /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface $service_container
-     */
-    protected $service_container;
     /**
      * @var CustomConfigurationManager
      */
@@ -27,23 +24,6 @@ class ConfiguratorManager
      */
     protected $owner_configuration_manager;
 
-    /**
-     *
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $service_container
-     */
-    public function setServiceContainer(\Symfony\Component\DependencyInjection\ContainerInterface $service_container)
-    {
-        $this->service_container = $service_container;
-    }
-
-    /**
-     *
-     * @return \Symfony\Component\DependencyInjection\ContainerInterface
-     */
-    protected function getServiceContainer()
-    {
-        return $this->service_container;
-    }
     /**
      * @return CustomConfigurationManager
      */
@@ -138,4 +118,12 @@ class ConfiguratorManager
         return json_decode($configuration->getValue(), true);
     }
 
+    /**
+     *
+     * @return string
+     */
+    public function getBundleName()
+    {
+        return 'TechPromuxDynamicConfigurationBundle';
+    }
 }

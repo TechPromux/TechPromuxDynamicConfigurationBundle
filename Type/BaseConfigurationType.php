@@ -1,11 +1,11 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Type;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Type;
 
 /**
  * Interface BaseConfigurationType
  *
- * @package TechPromux\Bundle\ConfigurationBundle\Type
+ * @package TechPromux\Bundle\DynamicDynamicConfigurationBundle\Type
  */
 interface BaseConfigurationType
 {

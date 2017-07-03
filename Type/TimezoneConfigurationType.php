@@ -6,7 +6,7 @@
  * Time: 19:11
  */
 
-namespace TechPromux\Bundle\ConfigurationBundle\Type;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Type;
 
 
 class TimezoneConfigurationType implements BaseConfigurationType

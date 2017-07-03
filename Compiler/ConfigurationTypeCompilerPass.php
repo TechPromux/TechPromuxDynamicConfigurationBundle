@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Compiler;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

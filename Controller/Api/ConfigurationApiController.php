@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Controller\Api;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Controller\Api;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -49,7 +49,7 @@ class ConfigurationApiController extends FOSRestController {
     }
 
     /**
-     * @return object|\TechPromux\Bundle\ConfigurationBundle\Manager\ConfiguratorManager
+     * @return object|\TechPromux\Bundle\DynamicConfigurationBundle\Manager\ConfiguratorManager
      */
     protected function getConfiguratorManager()
     {

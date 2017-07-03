@@ -1,62 +1,62 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Manager;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
 
 use TechPromux\Bundle\BaseBundle\Manager\Resource\BaseResourceManager;
-use TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration;
-use TechPromux\Bundle\ConfigurationBundle\Type\BaseConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\BooleanConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceCheckboxDifferentKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceCheckboxSameKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceRadioDifferentKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceRadioSameKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceSelectDifferentKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ChoiceSelectSameKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ColorRGBAConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ColorRGBConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\CountryConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\DateConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\DatetimeConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\EmailConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\ImageConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\IntegerConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\LanguageConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\LocaleConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleBooleanConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleColorRGBAConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleColorRGBConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleCountryConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleDateConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleDatetimeConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleEmailConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleIntegerConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleKeyValueConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleLanguageConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleLocaleConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleNumberConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextareaConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextareaHtmlConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleTimeConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleTimezoneConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\MultipleUrlConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\NumberConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\TextareaConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\TextareaHtmlConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\TextConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\TimeConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\TimezoneConfigurationType;
-use TechPromux\Bundle\ConfigurationBundle\Type\UrlConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\BaseConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\BooleanConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceCheckboxDifferentKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceCheckboxSameKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceRadioDifferentKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceRadioSameKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceSelectDifferentKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceSelectSameKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ColorRGBAConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ColorRGBConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\CountryConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\DateConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\DatetimeConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\EmailConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\ImageConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\IntegerConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\LanguageConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\LocaleConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleBooleanConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleColorRGBAConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleColorRGBConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleCountryConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleDateConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleDatetimeConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleEmailConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleIntegerConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleKeyValueConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleLanguageConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleLocaleConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleNumberConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextareaConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextareaHtmlConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTimeConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTimezoneConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleUrlConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\NumberConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\TextareaConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\TextareaHtmlConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\TextConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\TimeConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\TimezoneConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\UrlConfigurationType;
 
 /**
  * Class CustomConfigurationManager
  *
- * @package TechPromux\Bundle\ConfigurationBundle\Manager
+ * @package TechPromux\Bundle\DynamicDynamicConfigurationBundle\Manager
  */
 class CustomConfigurationManager extends BaseResourceManager {
 
     public function getBundleName() {
-        return 'TechPromuxConfigurationBundle';
+        return 'TechPromuxDynamicConfigurationBundle';
     }
 
     public function getMediaContextId()

@@ -6,11 +6,11 @@
  * Time: 18:04
  */
 
-namespace TechPromux\Bundle\ConfigurationBundle\Entity;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Entity;
 
-use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResourceOwner;
+use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\ResourceOwner;
 
-interface ConfigurationResourceOwner extends BaseResourceOwner
+interface ConfigurationResourceOwner extends ResourceOwner
 {
 
 }

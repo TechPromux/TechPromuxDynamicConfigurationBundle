@@ -1,219 +1,219 @@
 services:
 #    tech_promux_configuration.example:
-#        class: TechPromux\Bundle\ConfigurationBundle\Example
+#        class: TechPromux\Bundle\DynamicDynamicConfigurationBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
     # Types Services
 
     techpromux_configuration.type.text:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\TextConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\TextConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.textarea:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\TextareaConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\TextareaConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.textarea-html:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\TextareaHtmlConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\TextareaHtmlConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.email:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\EmailConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\EmailConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.integer:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\IntegerConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\IntegerConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.number:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\NumberConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\NumberConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.boolean:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\BooleanConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\BooleanConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.url:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\UrlConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\UrlConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.color_rgb:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ColorRGBConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ColorRGBConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.color_rgba:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ColorRGBAConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ColorRGBAConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.date:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\DateConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\DateConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.time:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\TimeConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\TimeConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.datetime:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\DatetimeConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\DatetimeConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.country:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\CountryConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\CountryConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.language:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\LanguageConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\LanguageConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.locale:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\LocaleConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\LocaleConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.timezone:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\TimezoneConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\TimezoneConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.image:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ImageConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ImageConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
         calls:
             - [ setServiceContainer,['@service_container']]
 
     techpromux_configuration.type.choice_select_same_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceSelectSameKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceSelectSameKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.choice_select_different_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceSelectDifferentKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceSelectDifferentKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.choice_radio_same_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceRadioSameKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceRadioSameKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.choice_radio_different_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceRadioDifferentKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceRadioDifferentKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.choice_checkbox_same_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceCheckboxSameKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceCheckboxSameKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.choice_checkbox_different_key_value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\ChoiceCheckboxDifferentKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\ChoiceCheckboxDifferentKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_text:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_textarea:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextareaConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextareaConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_textarea_html:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleTextareaHtmlConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTextareaHtmlConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-email:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleEmailConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleEmailConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_integer:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleIntegerConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleIntegerConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_number:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleNumberConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleNumberConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_boolean:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleBooleanConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleBooleanConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_url:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleUrlConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleUrlConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_color_rgb:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleColorRGBConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleColorRGBConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_color_rgba:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleColorRGBAConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleColorRGBAConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_date:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleDateConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleDateConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_time:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleTimeConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTimeConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple_datetime:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleDatetimeConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleDatetimeConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-country:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleCountryConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleCountryConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-language:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleLanguageConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleLanguageConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-locale:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleLocaleConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleLocaleConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-timezone:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleTimezoneConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleTimezoneConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 
     techpromux_configuration.type.multiple-key-value:
-        class: TechPromux\Bundle\ConfigurationBundle\Type\MultipleKeyValueConfigurationType
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\MultipleKeyValueConfigurationType
         tags:
             - { name: techpromux_configuration.type.configuration}
 

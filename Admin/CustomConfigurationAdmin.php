@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Admin;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -8,15 +8,15 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
-use TechPromux\Bundle\ConfigurationBundle\Entity\CustomConfiguration;
-use TechPromux\Bundle\ConfigurationBundle\Manager\CustomConfigurationManager;
-use TechPromux\Bundle\ConfigurationBundle\Type\BaseConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration;
+use TechPromux\Bundle\DynamicConfigurationBundle\Manager\CustomConfigurationManager;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\BaseConfigurationType;
 use TechPromux\Bundle\BaseBundle\Admin\Resource\BaseResourceAdmin;
 
 class CustomConfigurationAdmin extends BaseResourceAdmin
 {
 
-    //protected $translationDomain = 'TechPromuxConfigurationBundle';
+    //protected $translationDomain = 'TechPromuxDynamicConfigurationBundle';
 
 
     /**
@@ -200,7 +200,7 @@ class CustomConfigurationAdmin extends BaseResourceAdmin
     {
         switch ($name) {
             case 'base_list_field':
-                return 'TechPromuxConfigurationBundle:Admin:CRUD/base_list_field.html.twig';
+                return 'TechPromuxDynamicConfigurationBundle:Admin:CRUD/base_list_field.html.twig';
         }
         return parent::getTemplate($name);
     }

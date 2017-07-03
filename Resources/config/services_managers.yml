@@ -1,0 +1,27 @@
+services:
+   # Manager Services
+
+    techpromux_configuration.manager.custom_configuration:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\CustomConfigurationManager
+        arguments: [~]
+        tags:
+            - { name: techpromux.entity_manager}
+        calls:
+            - [ setServiceContainer,['@service_container']]
+
+    techpromux_configuration.manager.owner_configuration:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\OwnerConfigurationManager
+        arguments: [~]
+        tags:
+            - { name: techpromux.entity_manager}
+        calls:
+            - [ setServiceContainer,['@service_container']]
+            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+
+    techpromux_configuration.manager.configurator:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\ConfiguratorManager
+        arguments: [~]
+        calls:
+            - [ setServiceContainer,['@service_container']]
+            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+            - [ setOwnerConfigurationManager,['@techpromux_configuration.manager.owner_configuration']]

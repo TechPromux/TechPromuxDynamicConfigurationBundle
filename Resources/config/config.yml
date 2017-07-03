@@ -28,7 +28,7 @@ sonata_admin:
         groups:
             techpromux_configurations_admin:
                 label: System Configurations
-                label_catalogue: TechPromuxConfigurationBundle
+                label_catalogue: TechPromuxDynamicConfigurationBundle
                 icon: '<i class="glyphicon glyphicon-cog"></i>'
                 items:
                     - techpromux_configuration.admin.custom_configuration

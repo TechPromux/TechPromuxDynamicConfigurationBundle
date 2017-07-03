@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\ConfigurationBundle\Entity;
+namespace TechPromux\Bundle\DynamicConfigurationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResource;
@@ -57,7 +57,7 @@ class CustomConfiguration extends BaseResource
     protected $media;
 
     /**
-     * @ORM\OneToMany(targetEntity="TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration", mappedBy="configuration", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration", mappedBy="configuration", cascade={"all"}, orphanRemoval=true)
      */
     private $ownerConfigurations;
 
@@ -74,11 +74,11 @@ class CustomConfiguration extends BaseResource
     /**
      * Add ownerConfiguration
      *
-     * @param \TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration
+     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration
      *
      * @return CustomConfiguration
      */
-    public function addOwnerConfiguration(\TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration)
+    public function addOwnerConfiguration(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration)
     {
         $this->ownerConfigurations[] = $ownerConfiguration;
 
@@ -88,9 +88,9 @@ class CustomConfiguration extends BaseResource
     /**
      * Remove ownerConfiguration
      *
-     * @param \TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration
+     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration
      */
-    public function removeOwnerConfiguration(\TechPromux\Bundle\ConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration)
+    public function removeOwnerConfiguration(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration $ownerConfiguration)
     {
         $this->ownerConfigurations->removeElement($ownerConfiguration);
     }
