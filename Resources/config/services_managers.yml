@@ -1,27 +1,29 @@
 services:
    # Manager Services
 
-    techpromux_configuration.manager.custom_configuration:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\CustomConfigurationManager
+    techpromux_dynamic_configuration.manager.dynamic_configuration:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicConfigurationManager
         arguments: [~]
         tags:
             - { name: techpromux.entity_manager}
         calls:
             - [ setServiceContainer,['@service_container']]
+            - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
 
-    techpromux_configuration.manager.owner_configuration:
+    techpromux_dynamic_configuration.manager.owner_configuration:
         class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\OwnerConfigurationManager
         arguments: [~]
         tags:
             - { name: techpromux.entity_manager}
         calls:
             - [ setServiceContainer,['@service_container']]
-            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
+            - [ setDynamicConfigurationManager,['@techpromux_dynamic_configuration.manager.dynamic_configuration']]
+            - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
 
-    techpromux_configuration.manager.configurator:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\ConfiguratorManager
+    techpromux_dynamic_configuration.manager.util_dynamic_configuration:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\UtilDynamicConfigurationManager
         arguments: [~]
         calls:
             - [ setServiceContainer,['@service_container']]
-            - [ setCustomConfigurationManager,['@techpromux_configuration.manager.custom_configuration']]
-            - [ setOwnerConfigurationManager,['@techpromux_configuration.manager.owner_configuration']]
+            - [ setDynamicConfigurationManager,['@techpromux_dynamic_configuration.manager.dynamic_configuration']]
+            - [ setOwnerConfigurationManager,['@techpromux_dynamic_configuration.manager.owner_configuration']]

@@ -1,3 +1,3 @@
-techpromux_configuration_homepage:
+echpromux_dynamic_configuration_homepage:
     path:     /hello/{name}
     defaults: { _controller: TechPromuxDynamicConfigurationBundle:Default:index }

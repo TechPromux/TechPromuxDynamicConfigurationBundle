@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('tech_promux_configuration');
+        $rootNode = $treeBuilder->root('techpromux_dynamic_configuration');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

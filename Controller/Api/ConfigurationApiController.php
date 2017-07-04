@@ -43,16 +43,16 @@ class ConfigurationApiController extends FOSRestController {
      * @throws NotFoundHttpException when resource not exist
      */
     public function getAction(Request $request, $code) {
-        $value = $this->getConfiguratorManager()->getConfigurationValueByCode($code);
+        $value = $this->getUtilDynamicConfigurationManager()->getConfigurationValueByCode($code);
         $view = $this->view($value);
         return $this->handleView($view);
     }
 
     /**
-     * @return object|\TechPromux\Bundle\DynamicConfigurationBundle\Manager\ConfiguratorManager
+     * @return object|\TechPromux\Bundle\DynamicConfigurationBundle\Manager\UtilDynamicConfigurationManager
      */
-    protected function getConfiguratorManager()
+    protected function getUtilDynamicConfigurationManager()
     {
-        return $this->get('techpromux_configuration.manager.configurator');
+        return $this->get('techpromux_dynamic_configuration.manager.util_dynamic_configuration');
     }
 }

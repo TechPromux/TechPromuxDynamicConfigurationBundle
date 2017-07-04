@@ -4,12 +4,12 @@ imports:
 
 twig:
     globals:
-        techpromux_configurator: '@techpromux_configuration.manager.configurator'
+        techpromux_configurator: '@techpromux_dynamic_configuration.manager.util_dynamic_configuration'
 
 
 sonata_media:
     contexts:
-        techpromux_configuration_media_image:
+        techpromux_dynamic_configuration_media_image:
             providers:
                 - sonata.media.provider.image
 
@@ -23,14 +23,14 @@ sonata_media:
 sonata_admin:
     dashboard:
         blocks:
-            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [techpromux_configurations_admin] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [techpromux_dynamic_configuration_admin] } }
 
         groups:
-            techpromux_configurations_admin:
-                label: System Configurations
+            techpromux_dynamic_configuration_admin:
+                label: Dynamic Configurations
                 label_catalogue: TechPromuxDynamicConfigurationBundle
                 icon: '<i class="glyphicon glyphicon-cog"></i>'
                 items:
-                    - techpromux_configuration.admin.custom_configuration
-                    - techpromux_configuration.admin.owner_configuration
+                    - techpromux_dynamic_configuration.admin.dynamic_configuration
+                    - techpromux_dynamic_configuration.admin.owner_configuration
 

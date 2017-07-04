@@ -8,9 +8,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration;
-use TechPromux\Bundle\DynamicConfigurationBundle\Manager\CustomConfigurationManager;
+use TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicConfigurationManager;
 use TechPromux\Bundle\DynamicConfigurationBundle\Manager\OwnerConfigurationManager;
-use TechPromux\Bundle\DynamicConfigurationBundle\Type\BaseConfigurationType;
+use TechPromux\Bundle\DynamicConfigurationBundle\Type\Configuration\BaseConfigurationType;
 use TechPromux\Bundle\BaseBundle\Admin\Resource\BaseResourceAdmin;
 
 class OwnerConfigurationAdmin extends BaseResourceAdmin
@@ -31,15 +31,6 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
     public function getSubject()
     {
         return parent::getSubject();
-    }
-
-    /**
-     *
-     * @return CustomConfigurationManager
-     */
-    public function getCustomConfigurationManager()
-    {
-        return $this->getResourceManager()->getCustomConfigurationManager();
     }
 
     public function configureRoutes(\Sonata\AdminBundle\Route\RouteCollection $collection)
@@ -77,7 +68,7 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
             $listMapper->addIdentifier('configuration.title', null, array());
         }
         $listMapper->add('configuration.type', 'choice', array(
-            'choices' => $this->getResourceManager()->getCustomConfigurationManager()->getCustomConfigurationTypesChoices()
+            'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getDynamicConfigurationTypesChoices()
         ));
         $listMapper->add('printableValue', 'html', array(
             //'label' => 'Value',
@@ -112,7 +103,7 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
 
         $object = $this->getSubject();
 
-        $this->getResourceManager()->getCustomConfigurationManager()->transformValueToCustom($object);
+        $this->getResourceManager()->getUtilDynamicConfigurationManager()->transformValueToCustom($object);
 
         $formMapper
             ->with('Var Definition', array('class' => 'col-md-4'));
@@ -139,7 +130,7 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
 
         $formMapper->with('Value Options', array('class' => 'col-md-8'));
 
-        $field_options_type = $this->getCustomConfigurationManager()->getCustomConfigurationTypeById($object->getConfiguration()->getType());
+        $field_options_type = $this->getResourceManager()->getUtilDynamicConfigurationManager()->getDynamicConfigurationTypeById($object->getConfiguration()->getType());
         /** @var $field_options_type BaseConfigurationType */
 
         if (!$field_options_type->getHasSettings()) {
@@ -150,7 +141,7 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
             );
         } else {
             if ($object->getConfiguration()->getSettings()) {
-                $value_choices = $this->getCustomConfigurationManager()->getSettingsOptionsChoices($object->getConfiguration());
+                $value_choices = $this->getResourceManager()->getUtilDynamicConfigurationManager()->getSettingsOptionsChoices($object->getConfiguration());
                 $formMapper
                     ->add('customValue', $field_options_type->getValueType(),
                         array_merge($field_options_type->getValueOptions(), array(
@@ -176,7 +167,7 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
 
         parent::preUpdate($object);
 
-        $this->getResourceManager()->getCustomConfigurationManager()->transformCustomToValue($object);
+        $this->getResourceManager()->getUtilDynamicConfigurationManager()->transformCustomToValue($object);
 
     }
 
@@ -194,12 +185,4 @@ class OwnerConfigurationAdmin extends BaseResourceAdmin
         return parent::getTemplate($name);
     }
 
-    /**
-     *
-     * @return string
-     */
-    public function getResourceManagerID()
-    {
-        return 'techpromux_configuration.manager.owner_configuration';
-    }
 }

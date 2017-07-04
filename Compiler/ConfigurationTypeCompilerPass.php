@@ -10,22 +10,22 @@ class ConfigurationTypeCompilerPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('techpromux_configuration.manager.custom_configuration')) {
+        if (!$container->hasDefinition('techpromux_dynamic_configuration.manager.util_dynamic_configuration')) {
             return;
         }
 
         $managerDefinition = $container->getDefinition(
-            'techpromux_configuration.manager.custom_configuration'
+            'techpromux_dynamic_configuration.manager.util_dynamic_configuration'
         );
 
         $taggedServicesIds = $container->findTaggedServiceIds(
-            'techpromux_configuration.type.configuration'
+            'techpromux_dynamic_configuration.type.configuration'
         );
 
         foreach ($taggedServicesIds as $id => $tags) {
             //$type = $container->getDefinition($id);
             $managerDefinition->addMethodCall(
-                    'addCustomConfigurationType', array(new \Symfony\Component\DependencyInjection\Reference($id)));
+                    'addDynamicConfigurationType', array(new \Symfony\Component\DependencyInjection\Reference($id)));
 
         }
     }

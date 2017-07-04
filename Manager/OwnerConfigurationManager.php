@@ -17,7 +17,7 @@ class OwnerConfigurationManager extends BaseResourceManager {
 
     public function getMediaContextId()
     {
-        return 'techpromux_configuration_media_image';
+        return 'techpromux_dynamic_configuration_media_image';
     }
 
     /**
@@ -43,27 +43,58 @@ class OwnerConfigurationManager extends BaseResourceManager {
     //------------------------------------------
 
     /**
-     * @var CustomConfigurationManager
+     * @var DynamicConfigurationManager
      */
-    protected $custom_configuration_manager;
+    protected $dynamic_configuration_manager;
 
     /**
-     * @param CustomConfigurationManager $custom_configuration_manager
+     * @param DynamicConfigurationManager $dynamic_configuration_manager
      * @return $this
      */
-    public function setCustomConfigurationManager(CustomConfigurationManager $custom_configuration_manager)
+    public function setDynamicConfigurationManager(DynamicConfigurationManager $dynamic_configuration_manager)
     {
-        $this->custom_configuration_manager = $custom_configuration_manager;
+        $this->dynamic_configuration_manager = $dynamic_configuration_manager;
         return $this;
     }
 
     /**
-     * @return CustomConfigurationManager
+     * @return DynamicConfigurationManager
      */
-    public function getCustomConfigurationManager()
+    public function getDynamicConfigurationManager()
     {
-        return $this->custom_configuration_manager;
+        return $this->dynamic_configuration_manager;
     }
+
+    //-----------------------------------------------------------------------
+
+
+    /**
+     * @var UtilDynamicConfigurationManager
+     */
+    protected $util_dynamic_configuration_manager;
+
+    /**
+     * @return mixed
+     */
+    public function getUtilDynamicConfigurationManager()
+    {
+        return $this->util_dynamic_configuration_manager;
+    }
+
+    /**
+     * @param mixed $util_dynamic_configuration_manager
+     * @return DynamicConfigurationManager
+     */
+    public function setUtilDynamicConfigurationManager($util_dynamic_configuration_manager)
+    {
+        $this->util_dynamic_configuration_manager = $util_dynamic_configuration_manager;
+        return $this;
+    }
+
+
+
+    //--------------------------------------------------------------------------------
+
 
     public function synchronizeOwnerConfigurationsFromAuthenticatedUser()
     {
@@ -71,7 +102,7 @@ class OwnerConfigurationManager extends BaseResourceManager {
         $em = $this->getDoctrineEntityManager();
 
         // TODO cambiar las consultas por las qb del manager
-        $query = $em->createQuery('SELECT e_ FROM ' . $this->getCustomConfigurationManager()->getResourceClassShortcut() . ' e_ '
+        $query = $em->createQuery('SELECT e_ FROM ' . $this->getDynamicConfigurationManager()->getResourceClassShortcut() . ' e_ '
             . 'WHERE e_.context = :context')
             ->setParameter('context', 'OWNER');
 

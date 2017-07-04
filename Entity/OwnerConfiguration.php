@@ -10,7 +10,7 @@ use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\HasResourceOwner;
 /**
  * OwnerConfiguration
  *
- * @ORM\Table(name="techpromux_configuration_owner_configuration")
+ * @ORM\Table(name="techpromux_dynamic_configuration_owner_configuration")
  * @ORM\Entity()
  */
 class OwnerConfiguration extends BaseResource implements HasResourceOwner
@@ -32,7 +32,7 @@ class OwnerConfiguration extends BaseResource implements HasResourceOwner
     protected $media;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration", inversedBy="ownerConfigurations")
+     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration", inversedBy="ownerConfigurations")
      * @ORM\JoinColumn(name="configuration_id", referencedColumnName="id", nullable=false)
      */
     private $configuration;
@@ -50,11 +50,11 @@ class OwnerConfiguration extends BaseResource implements HasResourceOwner
     /**
      * Set configuration
      *
-     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration $configuration
+     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration $configuration
      *
      * @return OwnerConfiguration
      */
-    public function setConfiguration(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration $configuration)
+    public function setConfiguration(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration $configuration)
     {
         $this->configuration = $configuration;
 
@@ -64,7 +64,7 @@ class OwnerConfiguration extends BaseResource implements HasResourceOwner
     /**
      * Get configuration
      *
-     * @return \TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration
+     * @return \TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration
      */
     public function getConfiguration()
     {
@@ -149,7 +149,7 @@ class OwnerConfiguration extends BaseResource implements HasResourceOwner
      *
      * @param \Sonata\MediaBundle\Entity\BaseMedia $media
      *
-     * @return CustomConfiguration
+     * @return DynamicConfiguration
      */
     public function setMedia(\Sonata\MediaBundle\Entity\BaseMedia $media = null)
     {
@@ -177,7 +177,7 @@ class OwnerConfiguration extends BaseResource implements HasResourceOwner
 
     /**
      * @param any $customValue
-     * @return CustomConfiguration
+     * @return DynamicConfiguration
      */
     public function setCustomValue($customValue)
     {

@@ -5,14 +5,20 @@ services:
 
     # Admin Services
 
-    techpromux_configuration.admin.custom_configuration:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Admin\CustomConfigurationAdmin
-        arguments: [~, TechPromux\Bundle\DynamicConfigurationBundle\Entity\CustomConfiguration, SonataAdminBundle:CRUD]
+    techpromux_dynamic_configuration.admin.dynamic_configuration:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Admin\DynamicConfigurationAdmin
+        arguments: [~, TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: techpromux_configurations_admin, label: 'General Configurations'}
+            - { name: sonata.admin, manager_type: orm, group: techpromux_dynamic_configuration_admin, label: 'General Configurations'}
+        calls:
+            - [ setTranslationDomain,['TechPromuxDynamicConfigurationBundle']]
+            - [ setResourceManager,['@techpromux_dynamic_configuration.manager.dynamic_configuration']]
 
-    techpromux_configuration.admin.owner_configuration:
+    techpromux_dynamic_configuration.admin.owner_configuration:
         class: TechPromux\Bundle\DynamicConfigurationBundle\Admin\OwnerConfigurationAdmin
         arguments: [~, TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: techpromux_configurations_admin, label: 'Owner Configurations', show_in_dashboard: true}
+            - { name: sonata.admin, manager_type: orm, group: techpromux_dynamic_configuration_admin, label: 'Owner Configurations', show_in_dashboard: true}
+        calls:
+            - [ setTranslationDomain,['TechPromuxDynamicConfigurationBundle']]
+            - [ setResourceManager,['@techpromux_dynamic_configuration.manager.owner_configuration']]
