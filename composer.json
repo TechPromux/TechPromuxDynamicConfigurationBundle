@@ -1,6 +1,6 @@
 {
     "name": "techpromux/dynamic-configuration-bundle",
-    "description": "Build your own custom queries throught dynamic configuration pages",
+    "description": "Build your own custom vars throught dynamic configuration pages",
     "require": {
         "php": "^5.3.3 || ^7.0",
         "techpromux/base-bundle": "dev-master",
