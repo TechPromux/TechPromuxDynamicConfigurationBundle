@@ -1,8 +1,8 @@
 services:
    # Manager Services
 
-    techpromux_dynamic_configuration.manager.dynamic_configuration:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicConfigurationManager
+    techpromux_dynamic_configuration.manager.dynamic_variable:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicVariableManager
         arguments: [~]
         tags:
             - { name: techpromux.entity_manager}
@@ -10,14 +10,14 @@ services:
             - [ setServiceContainer,['@service_container']]
             - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
 
-    techpromux_dynamic_configuration.manager.owner_configuration:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\OwnerConfigurationManager
+    techpromux_dynamic_configuration.manager.owner_variable:
+        class: TechPromux\Bundle\DynamicConfigurationBundle\Manager\OwnerVariableManager
         arguments: [~]
         tags:
             - { name: techpromux.entity_manager}
         calls:
             - [ setServiceContainer,['@service_container']]
-            - [ setDynamicConfigurationManager,['@techpromux_dynamic_configuration.manager.dynamic_configuration']]
+            - [ setDynamicVariableManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]
             - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
 
     techpromux_dynamic_configuration.manager.util_dynamic_configuration:
@@ -25,5 +25,5 @@ services:
         arguments: [~]
         calls:
             - [ setServiceContainer,['@service_container']]
-            - [ setDynamicConfigurationManager,['@techpromux_dynamic_configuration.manager.dynamic_configuration']]
-            - [ setOwnerConfigurationManager,['@techpromux_dynamic_configuration.manager.owner_configuration']]
+            - [ setDynamicVariableManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]
+            - [ setOwnerVariableManager,['@techpromux_dynamic_configuration.manager.owner_variable']]

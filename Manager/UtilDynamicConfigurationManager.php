@@ -10,8 +10,8 @@ namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
 
 
 use TechPromux\Bundle\BaseBundle\Manager\BaseManager;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicConfiguration;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerConfiguration;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicVariable;
+use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable;
 
 class UtilDynamicConfigurationManager extends BaseManager
 {
@@ -24,98 +24,99 @@ class UtilDynamicConfigurationManager extends BaseManager
     {
         return 'TechPromuxDynamicConfigurationBundle';
     }
-    
+
     //-----------------------------------------------------------------------
 
     /**
-     * @var DynamicConfigurationManager
+     * @var DynamicVariableManager
      */
     protected $dynamic_configuration_manager;
     /**
-     * @var OwnerConfigurationManager
+     * @var OwnerVariableManager
      */
-    protected $owner_configuration_manager;
+    protected $owner_variable_manager;
 
     /**
-     * @return DynamicConfigurationManager
+     * @return DynamicVariableManager
      */
-    protected function getDynamicConfigurationManager()
+    protected function getDynamicVariableManager()
     {
         return $this->dynamic_configuration_manager;
     }
 
     /**
-     * @return OwnerConfigurationManager
+     * @return OwnerVariableManager
      */
-    protected function getOwnerConfigurationManager()
+    protected function getOwnerVariableManager()
     {
-        return $this->owner_configuration_manager;
+        return $this->owner_variable_manager;
     }
 
     /**
-     * @param DynamicConfigurationManager $dynamic_configuration_manager
+     * @param DynamicVariableManager $dynamic_configuration_manager
      * @return UtilDynamicConfigurationManager
      */
-    public function setDynamicConfigurationManager($dynamic_configuration_manager)
+    public function setDynamicVariableManager($dynamic_configuration_manager)
     {
         $this->dynamic_configuration_manager = $dynamic_configuration_manager;
         return $this;
     }
 
     /**
-     * @param OwnerConfigurationManager $owner_configuration_manager
+     * @param OwnerVariableManager $owner_variable_manager
      * @return UtilDynamicConfigurationManager
      */
-    public function setOwnerConfigurationManager($owner_configuration_manager)
+    public function setOwnerVariableManager($owner_variable_manager)
     {
-        $this->owner_configuration_manager = $owner_configuration_manager;
+        $this->owner_variable_manager = $owner_variable_manager;
         return $this;
     }
-    
+
     //----------------------------------------------------------------------
+
     /**
      *
      * @param string $code
-     * @return DynamicConfiguration|OwnerConfiguration
+     * @return DynamicVariable|OwnerVariable
      */
-    public function findConfigurationByCode($code)
+    public function findVariableByCode($code)
     {
         if (is_null($code)) {
             throw new \Exception('Null code dont be accepted');
         }
 
-        $em = $this->getDynamicConfigurationManager()->getDoctrineEntityManager();
+        $em = $this->getDynamicVariableManager()->getDoctrineEntityManager();
 
         // TODO sustituir por findByCode
-        $query = $em->createQuery('SELECT e_ FROM ' . $this->getDynamicConfigurationManager()->getResourceClassShortcut() . ' e_ '
+        $query = $em->createQuery('SELECT e_ FROM ' . $this->getDynamicVariableManager()->getResourceClassShortcut() . ' e_ '
             . 'WHERE e_.name = :code')
             ->setParameter('code', $code);
 
-        $configuration = $query->getOneOrNullResult();
-        /* @var $configuration DynamicConfiguration */
+        $variable = $query->getOneOrNullResult();
+        /* @var $variable DynamicVariable */
 
-        if (is_null($configuration)) {
-            throw new \Exception('Configuration code {' . $code . '} was not found');
+        if (is_null($variable)) {
+            throw new \Exception('Variable code {' . $code . '} was not found');
         }
 
-        if ($configuration->getType() == "SYSTEM") {
-            return $configuration;
+        if ($variable->getType() == "SYSTEM") {
+            return $variable;
         } else {
-            $owner = $this->getOwnerConfigurationManager()->getResourceOwnerManager()->findOwnerOfAuthenticatedUser();
+            $owner = $this->getOwnerVariableManager()->getResourceOwnerManager()->findOwnerOfAuthenticatedUser();
 
-            $query_cfg = $em->createQuery('SELECT e_ FROM ' . $this->getOwnerConfigurationManager()->getResourceClassShortcut() . ' e_ '
-                . 'JOIN e_.owner owner_ JOIN e_.configuration cfg WHERE owner_.id = :owner AND cfg.id = :configuration'
+            $query_cfg = $em->createQuery('SELECT e_ FROM ' . $this->getOwnerVariableManager()->getResourceClassShortcut() . ' e_ '
+                . 'JOIN e_.owner owner_ JOIN e_.variable cfg WHERE owner_.id = :owner AND cfg.id = :variable'
             )
                 ->setParameter('owner', $owner->getId())
-                ->setParameter('configuration', $configuration->getId());
+                ->setParameter('variable', $variable->getId());
 
-            $configuration_ov = $query_cfg->getOneOrNullResult();
+            $variable_ov = $query_cfg->getOneOrNullResult();
 
-            if (is_null($configuration_ov)) {
-                return $configuration;
+            if (is_null($variable_ov)) {
+                return $variable;
             }
 
-            return $configuration_ov;
+            return $variable_ov;
         }
     }
 
@@ -124,11 +125,11 @@ class UtilDynamicConfigurationManager extends BaseManager
      * @param string $code
      * @return any
      */
-    public function getConfigurationValueByCode($code)
+    public function getVariableValueByCode($code)
     {
-        $configuration = $this->findConfigurationByCode($code);
+        $variable = $this->findVariableByCode($code);
 
-        return json_decode($configuration->getValue(), true);
+        return json_decode($variable->getValue(), true);
     }
     //---------------------------------------------------------------------------------------------
 
@@ -140,55 +141,53 @@ class UtilDynamicConfigurationManager extends BaseManager
         return array(
             'SYSTEM' => ('SYSTEM'),
             'OWNER' => ('OWNER'),
-            //'USER' => $this->trans('User configuration'),
+            //'USER' => $this->trans('User variable'),
         );
     }
 
     //----------------------------------------------------------------------------------------
 
-    protected $dynamic_configuration_types = array();
+    protected $variable_types = array();
 
     /**
-     * @param BaseConfigurationType $dynamic_configuration_type
-     * @return array
+     * @param $variable_type
+     * @return $this
      */
-    public function addDynamicConfigurationType($dynamic_configuration_type)
+    public function addVariableType($variable_type)
     {
-        $this->dynamic_configuration_types[$dynamic_configuration_type->getId()] = $dynamic_configuration_type;
-        return $this->dynamic_configuration_types;
+        $this->variable_types[$variable_type->getId()] = $variable_type;
+        return $this;
     }
 
     /**
      * @return array
      */
-    public function getRegisteredDynamicConfigurationTypes()
+    public function getRegisteredVariableTypes()
     {
-        return $this->dynamic_configuration_types;
+        return $this->variable_types;
     }
 
     /**
      * @return array
      */
-    public function getDynamicConfigurationTypesChoices()
+    public function getVariableTypesChoices()
     {
-        $field_types_choices = array();
+        $types_choices = array();
 
-        foreach ($this->dynamic_configuration_types as $fto) {
-            /** @var $fto BaseConfigurationType */
-            $field_types_choices[$fto->getId()] = $fto->getId();
+        foreach ($this->variable_types as $fto) {
+            /** @var $fto BaseVariableType */
+            $types_choices[$fto->getId()] = $fto->getId();
         }
-        return $field_types_choices;
+        return $types_choices;
     }
 
     /**
      * @param $type
      * @return mixed
      */
-    public function getDynamicConfigurationTypeById($type)
+    public function getVariableTypeById($type)
     {
-        $this->dynamic_configuration_types = $this->getRegisteredDynamicConfigurationTypes();
-
-        return $this->dynamic_configuration_types[$type];
+        return $this->variable_types[$type];
     }
 
     //--------------------------------------------------------------------------------
@@ -201,8 +200,8 @@ class UtilDynamicConfigurationManager extends BaseManager
     {
         $type = $object->getType();
 
-        $object_type = $this->dynamic_configuration_types[$type];
-        /** @var $object_type BaseConfigurationType */
+        $object_type = $this->getVariableTypeById($type);
+        /** @var $object_type BaseVariableType */
 
         $value_choices = $object_type->getSettingsOptionsChoices($object);
 
@@ -212,17 +211,15 @@ class UtilDynamicConfigurationManager extends BaseManager
     //----------------------------------------------------------------------
 
     /**
-     * @param DynamicConfiguration $object
+     * @param DynamicVariable $object
      * @return mixed
      */
     public function transformValueToCustom($object)
     {
-        $this->dynamic_configuration_types = $this->getRegisteredDynamicConfigurationTypes();
-
         if ($object && $object->getId()) {
             $type = $object->getType();
-            $object_type = $this->dynamic_configuration_types[$type];
-            /** @var $object_type BaseConfigurationType */
+            $object_type = $this->variable_types[$type];
+            /** @var $object_type BaseVariableType */
             $object_type->transformValueToCustom($object);
 
         }
@@ -231,12 +228,10 @@ class UtilDynamicConfigurationManager extends BaseManager
 
     public function transformCustomToValue($object)
     {
-        $this->dynamic_configuration_types = $this->getRegisteredDynamicConfigurationTypes();
-
         if ($object && $object->getId()) {
             $type = $object->getType();
-            $object_type = $this->dynamic_configuration_types[$type];
-            /** @var $object_type BaseConfigurationType */
+            $object_type = $this->variable_types[$type];
+            /** @var $object_type BaseVariableType */
             $object_type->transformCustomToValue($object);
 
         }
@@ -244,7 +239,6 @@ class UtilDynamicConfigurationManager extends BaseManager
     }
 
     //-----------------------------------------------------------
-    
 
 
 }

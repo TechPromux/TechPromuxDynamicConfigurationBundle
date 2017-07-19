@@ -1,20 +1,20 @@
-Configuration Value in any Controller:
+Variable Value in any Controller:
 
-$configuration = $this->get('tech_prommux_configuration.configurator')->getConfiguration('CODE');
+$variable = $this->get('tech_prommux_variable.configurator')->getVariable('CODE');
 
-value:       $configuration->getCustomValue();
-value_str:   $configuration->getValue(); // as json converted in string format
-code:        $configuration->getCode();							
-description: $configuration->getDescription();
+value:       $variable->getCustomValue();
+value_str:   $variable->getValue(); // as json converted in string format
+code:        $variable->getCode();
+description: $variable->getDescription();
 
-$value         = $this->get('tech_prommux_configuration.configurator')->getValue('CODE');
-$value_string  = $this->get('tech_prommux_configuration.configurator')->getValueAsString('CODE');
+$value         = $this->get('tech_prommux_variable.configurator')->getValue('CODE');
+$value_string  = $this->get('tech_prommux_variable.configurator')->getValueAsString('CODE');
 
 
 ---------------------------------------------------------------
-Configuration Value in Twig template:
+Variable Value in Twig template:
 
-{% tech_prommux_configurator.getConfiguration('CODE') %}
+{% tech_prommux_configurator.getVariable('CODE') %}
 
 {% tech_prommux_configurator.getValue('CODE') %}
 
@@ -22,5 +22,5 @@ Configuration Value in Twig template:
 
 If it is Image Type:
 
-{{ tech_prommux_configurator.getConfiguration('IMAGE').media | raw }}
-{% media tech_prommux_configurator.getConfiguration('IMAGE').media, 'wide'  %}
+{{ tech_prommux_configurator.getVariable('IMAGE').media | raw }}
+{% media tech_prommux_configurator.getVariable('IMAGE').media, 'wide'  %}

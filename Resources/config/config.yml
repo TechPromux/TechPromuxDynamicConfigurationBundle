@@ -32,5 +32,5 @@ sonata_admin:
                 icon: '<i class="glyphicon glyphicon-cog"></i>'
                 items:
                     - techpromux_dynamic_configuration.admin.dynamic_configuration
-                    - techpromux_dynamic_configuration.admin.owner_configuration
+                    - techpromux_dynamic_configuration.admin.owner_variable
 

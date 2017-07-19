@@ -3,7 +3,7 @@
 namespace TechPromux\Bundle\DynamicConfigurationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Variable\Route;
 
 class DefaultController extends Controller
 {
