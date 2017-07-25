@@ -6,7 +6,7 @@
  * Time: 19:11
  */
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable;
+namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 
 class MultipleColorRGBAVariableType implements BaseVariableType

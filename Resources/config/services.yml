@@ -6,5 +6,5 @@ imports:
 services:
 
 #    tech_promux_variable.example:
-#        class: TechPromux\Bundle\DynamicDynamicConfigurationBundle\Example
+#        class:  TechPromux\DynamicDynamicConfigurationBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]

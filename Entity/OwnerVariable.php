@@ -1,11 +1,11 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Entity;
+namespace  TechPromux\DynamicConfigurationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResource;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\ResourceOwner;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\HasResourceOwner;
+use  TechPromux\BaseBundle\Entity\Resource\BaseResource;
+use  TechPromux\BaseBundle\Entity\Owner\ResourceOwner;
+use  TechPromux\BaseBundle\Entity\Owner\HasResourceOwner;
 
 /**
  * OwnerVariable
@@ -32,7 +32,7 @@ class OwnerVariable extends BaseResource implements HasResourceOwner
     protected $media;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicVariable", inversedBy="ownerVariables")
+     * @ORM\ManyToOne(targetEntity=" TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable", inversedBy="ownerVariables")
      * @ORM\JoinColumn(name="variable_id", referencedColumnName="id", nullable=false)
      */
     private $variable;
@@ -40,7 +40,7 @@ class OwnerVariable extends BaseResource implements HasResourceOwner
     /**
      * @var ResourceOwner
      *
-     * @ORM\ManyToOne(targetEntity="TechPromux\Bundle\BaseBundle\Entity\Resource\Owner\ResourceOwner")
+     * @ORM\ManyToOne(targetEntity=" TechPromux\BaseBundle\Entity\Owner\ResourceOwner")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=true)
      */
     protected $owner;

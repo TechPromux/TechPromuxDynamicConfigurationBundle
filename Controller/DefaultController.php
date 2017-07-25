@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Controller;
+namespace  TechPromux\DynamicConfigurationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Variable\Route;

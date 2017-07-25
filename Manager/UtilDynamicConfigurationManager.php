@@ -6,12 +6,12 @@
  * Time: 00:29
  */
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
+namespace  TechPromux\DynamicConfigurationBundle\Manager;
 
 
-use TechPromux\Bundle\BaseBundle\Manager\BaseManager;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicVariable;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable;
+use  TechPromux\BaseBundle\Manager\BaseManager;
+use  TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable;
+use  TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable;
 
 class UtilDynamicConfigurationManager extends BaseManager
 {
@@ -85,7 +85,7 @@ class UtilDynamicConfigurationManager extends BaseManager
             throw new \Exception('Null code dont be accepted');
         }
 
-        $em = $this->getDynamicVariableManager()->getDoctrineEntityManager();
+        $em = $this->getDynamicVariableManager()->getEntityManager();
 
         // TODO sustituir por findByCode
         $query = $em->createQuery('SELECT e_ FROM ' . $this->getDynamicVariableManager()->getResourceClassShortcut() . ' e_ '

@@ -6,48 +6,13 @@
  * Time: 19:11
  */
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable;
+namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 
-use TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicVariableManager;
+use  TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
 
 class ImageVariableType implements BaseVariableType
 {
-
-    private $service_container;
-
-    /**
-     * @var DynamicVariableManager
-     */
-    private $dynamic_variable_manager;
-
-    /**
-     * @param $service_container
-     * @return $this
-     */
-    public function setServiceContainer($service_container)
-    {
-        $this->service_container = $service_container;
-        return $this;
-    }
-
-    /**
-     * @return DynamicVariableManager
-     */
-    public function getDynamicVariableManager()
-    {
-        return $this->dynamic_variable_manager;
-    }
-
-    /**
-     * @param DynamicVariableManager $dynamic_variable_manager
-     * @return ImageVariableType
-     */
-    public function setDynamicVariableManager($dynamic_variable_manager)
-    {
-        $this->dynamic_variable_manager = $dynamic_variable_manager;
-        return $this;
-    }
 
     public function getId()
     {
@@ -68,7 +33,7 @@ class ImageVariableType implements BaseVariableType
     {
         return array(
             'provider' => 'sonata.media.provider.image',
-            'context' => $this->getDynamicVariableManager()->getMediaContext()->getId(),
+            'context' => $this->getMediaContext()->getId(),
             'attr' => array(
                 'class' => 'type_media_image'
             )
@@ -121,4 +86,138 @@ class ImageVariableType implements BaseVariableType
         $object->setMedia($value);
         return $object;
     }
+
+    //-------------------------------------------------------------------
+
+
+    private $service_container;
+
+
+
+    /**
+     * @param $service_container
+     * @return $this
+     */
+    public function setServiceContainer($service_container)
+    {
+        $this->service_container = $service_container;
+        return $this;
+    }
+
+    //------------------------------------------------------------------
+
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entity_manager;
+
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEntityManager()
+    {
+        return $this->entity_manager;
+    }
+
+    /**
+     * @param EntityManagerInterface $entity_manager
+     * @return BaseManager
+     */
+    public function setEntityManager($entity_manager)
+    {
+        $this->entity_manager = $entity_manager;
+        return $this;
+    }
+
+    //-------------------------------------------------------------------
+
+    /**
+     * Obtiene el servicio "sonata.classification.manager.context"
+     *
+     * @return \Sonata\ClassificationBundle\Entity\ContextManager
+     */
+    protected function getClassificationContextManager()
+    {
+        return $this->service_container->get('sonata.classification.manager.context');
+    }
+
+    /**
+     * Obtiene el servicio "sonata.classification.manager.category"
+     *
+     * @return \Sonata\ClassificationBundle\Entity\CategoryManager
+     */
+    protected function getClassificationCategoryManager()
+    {
+        return $this->service_container->get('sonata.classification.manager.category');
+    }
+
+    /**
+     * Obtiene el servicio "sonata.media.manager.media"
+     *
+     * @return \Sonata\MediaBundle\Entity\MediaManager
+     */
+    protected function getMediaManager()
+    {
+        return $this->service_container->get('sonata.media.manager.media');
+    }
+
+    /**
+     * Obtiene el ID utilizado por defecto para generar contextos de medias
+     *
+     * @return string
+     */
+    protected function getDefaultMediaContextId()
+    {
+        return 'techpromux_dynamic_configuration_media_image';
+    }
+
+    /**
+     * Obtiene el ID utilizado para generar contextos de medias
+     *
+     * @return string
+     */
+    public function getMediaContextId()
+    {
+        return $this->getDefaultMediaContextId();
+    }
+
+    /**
+     * Obtiene el contexto de medias
+     *
+     * @return \Sonata\ClassificationBundle\Entity\BaseContext
+     */
+    public function getMediaContext($context_id = null)
+    {
+
+        if (is_null($context_id)) {
+            $context_id = $this->getMediaContextId();
+        }
+
+        $context = $this->getClassificationContextManager()->find($context_id);
+
+        if (is_null($context)) {
+            $context = $this->getClassificationContextManager()->create();
+            $context->setId($context_id);
+            $context->setName($context_id);
+            $context->setEnabled(true);
+            $context->setCreatedAt(new \Datetime());
+            $context->setUpdatedAt(new \Datetime());
+            $this->getEntityManager()->persist($context);
+            $this->getEntityManager()->flush($context);
+
+            $defaultCategory = $this->getClassificationCategoryManager()->create();
+            $defaultCategory->setContext($context);
+            $defaultCategory->setName($context->getId() . '_default');
+            $defaultCategory->setEnabled(true);
+            $defaultCategory->setCreatedAt(new \Datetime());
+            $defaultCategory->setUpdatedAt(new \Datetime());
+            $defaultCategory->setSlug($context->getId() . '_default');
+            $defaultCategory->setDescription($context->getId() . '_default');
+            $this->getEntityManager()->persist($defaultCategory);
+            $this->getEntityManager()->flush($defaultCategory);
+        }
+
+        return $context;
+    }
+
 }

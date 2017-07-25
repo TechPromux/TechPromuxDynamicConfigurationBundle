@@ -1,221 +1,221 @@
 services:
 #    tech_promux_variable.example:
-#        class: TechPromux\Bundle\DynamicDynamicConfigurationBundle\Example
+#        class:  TechPromux\DynamicDynamicConfigurationBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 
     # Types Services
 
     techpromux_dynamic_configuration.type.text:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\TextVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\TextVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.textarea:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\TextareaVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\TextareaVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.textarea-html:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\TextareaHtmlVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\TextareaHtmlVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.email:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\EmailVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\EmailVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.integer:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\IntegerVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\IntegerVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.number:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\NumberVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\NumberVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.boolean:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\BooleanVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\BooleanVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.url:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\UrlVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\UrlVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.color_rgb:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ColorRGBVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ColorRGBVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.color_rgba:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ColorRGBAVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ColorRGBAVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.date:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\DateVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\DateVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.time:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\TimeVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\TimeVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.datetime:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\DatetimeVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\DatetimeVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.country:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\CountryVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\CountryVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.language:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\LanguageVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\LanguageVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.locale:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\LocaleVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\LocaleVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.timezone:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\TimezoneVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\TimezoneVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.image:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ImageVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ImageVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
         calls:
             - [ setServiceContainer,['@service_container']]
-            - [ setDynamicVariableManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]
+            - [ setEntityManager,['@doctrine.orm.default_entity_manager']]
 
 
     techpromux_dynamic_configuration.type.choice_select_same_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceSelectSameKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceSelectSameKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.choice_select_different_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceSelectDifferentKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceSelectDifferentKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.choice_radio_same_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceRadioSameKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceRadioSameKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.choice_radio_different_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceRadioDifferentKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceRadioDifferentKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.choice_checkbox_same_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceCheckboxSameKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceCheckboxSameKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.choice_checkbox_different_key_value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\ChoiceCheckboxDifferentKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\ChoiceCheckboxDifferentKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_text:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleTextVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleTextVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_textarea:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleTextareaVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleTextareaVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_textarea_html:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleTextareaHtmlVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleTextareaHtmlVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-email:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleEmailVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleEmailVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_integer:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleIntegerVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleIntegerVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_number:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleNumberVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleNumberVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_boolean:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleBooleanVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleBooleanVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_url:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleUrlVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleUrlVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_color_rgb:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleColorRGBVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleColorRGBVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_color_rgba:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleColorRGBAVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleColorRGBAVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_date:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleDateVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleDateVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_time:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleTimeVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleTimeVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple_datetime:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleDatetimeVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleDatetimeVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-country:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleCountryVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleCountryVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-language:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleLanguageVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleLanguageVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-locale:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleLocaleVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleLocaleVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-timezone:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleTimezoneVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleTimezoneVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 
     techpromux_dynamic_configuration.type.multiple-key-value:
-        class: TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\MultipleKeyValueVariableType
+        class:  TechPromux\DynamicConfigurationBundle\Type\Variable\MultipleKeyValueVariableType
         tags:
             - { name: techpromux_dynamic_configuration.type.variable}
 

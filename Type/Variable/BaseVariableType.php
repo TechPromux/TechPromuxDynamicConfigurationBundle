@@ -1,11 +1,11 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable;
+namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 /**
  * Interface BaseVariableType
  *
- * @package TechPromux\Bundle\DynamicDynamicConfigurationBundle\Type\Variable
+ * @package  TechPromux\DynamicDynamicConfigurationBundle\Type\Variable
  */
 interface BaseVariableType
 {

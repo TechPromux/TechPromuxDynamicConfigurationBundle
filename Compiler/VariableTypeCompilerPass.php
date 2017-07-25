@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Compiler;
+namespace  TechPromux\DynamicConfigurationBundle\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -23,9 +23,9 @@ class VariableTypeCompilerPass implements CompilerPassInterface
         );
 
         foreach ($taggedServicesIds as $id => $tags) {
-            //$type = $container->getDefinition($id);
+
             $managerDefinition->addMethodCall(
-                    'addVariableType', array(new \Symfony\Component\DependencyInjection\Reference($id)));
+                'addVariableType', array(new \Symfony\Component\DependencyInjection\Reference($id)));
 
         }
     }

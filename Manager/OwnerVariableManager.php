@@ -1,9 +1,9 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Manager;
+namespace  TechPromux\DynamicConfigurationBundle\Manager;
 
-use TechPromux\Bundle\BaseBundle\Manager\Resource\BaseResourceManager;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable;
+use  TechPromux\BaseBundle\Manager\Resource\BaseResourceManager;
+use  TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable;
 
 /**
  * VariableManager
@@ -99,7 +99,7 @@ class OwnerVariableManager extends BaseResourceManager {
     public function synchronizeOwnerVariablesFromAuthenticatedUser()
     {
 
-        $em = $this->getDoctrineEntityManager();
+        $em = $this->getEntityManager();
 
         // TODO cambiar las consultas por las qb del manager
         $query = $em->createQuery('SELECT e_ FROM ' . $this->getDynamicVariableManager()->getResourceClassShortcut() . ' e_ '

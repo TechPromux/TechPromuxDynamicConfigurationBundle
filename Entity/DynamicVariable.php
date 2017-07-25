@@ -1,9 +1,9 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Entity;
+namespace  TechPromux\DynamicConfigurationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use TechPromux\Bundle\BaseBundle\Entity\Resource\BaseResource;
+use  TechPromux\BaseBundle\Entity\Resource\BaseResource;
 
 /**
  * DynamicVariable
@@ -56,7 +56,7 @@ class DynamicVariable extends BaseResource
     protected $media;
 
     /**
-     * @ORM\OneToMany(targetEntity="TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable", mappedBy="variable", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=" TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable", mappedBy="variable", cascade={"all"}, orphanRemoval=true)
      */
     private $ownerVariables;
 
@@ -73,11 +73,11 @@ class DynamicVariable extends BaseResource
     /**
      * Add ownerVariable
      *
-     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
+     * @param \ TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
      *
      * @return DynamicVariable
      */
-    public function addOwnerVariable(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
+    public function addOwnerVariable(\ TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
     {
         $this->ownerVariables[] = $ownerVariable;
 
@@ -87,9 +87,9 @@ class DynamicVariable extends BaseResource
     /**
      * Remove ownerVariable
      *
-     * @param \TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
+     * @param \ TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
      */
-    public function removeOwnerVariable(\TechPromux\Bundle\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
+    public function removeOwnerVariable(\ TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
     {
         $this->ownerVariables->removeElement($ownerVariable);
     }

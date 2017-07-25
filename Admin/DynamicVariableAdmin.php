@@ -1,6 +1,6 @@
 <?php
 
-namespace TechPromux\Bundle\DynamicConfigurationBundle\Admin;
+namespace  TechPromux\DynamicConfigurationBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -8,10 +8,10 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
-use TechPromux\Bundle\DynamicConfigurationBundle\Entity\DynamicVariable;
-use TechPromux\Bundle\DynamicConfigurationBundle\Manager\DynamicVariableManager;
-use TechPromux\Bundle\DynamicConfigurationBundle\Type\Variable\BaseVariableType;
-use TechPromux\Bundle\BaseBundle\Admin\Resource\BaseResourceAdmin;
+use  TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable;
+use  TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
+use  TechPromux\DynamicConfigurationBundle\Type\Variable\BaseVariableType;
+use  TechPromux\BaseBundle\Admin\Resource\BaseResourceAdmin;
 
 class DynamicVariableAdmin extends BaseResourceAdmin
 {
