@@ -32,7 +32,7 @@ class OwnerVariable extends BaseResource implements HasResourceOwner
     protected $media;
 
     /**
-     * @ORM\ManyToOne(targetEntity=" TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable", inversedBy="ownerVariables")
+     * @ORM\ManyToOne(targetEntity="TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable", inversedBy="ownerVariables")
      * @ORM\JoinColumn(name="variable_id", referencedColumnName="id", nullable=false)
      */
     private $variable;
@@ -40,7 +40,7 @@ class OwnerVariable extends BaseResource implements HasResourceOwner
     /**
      * @var ResourceOwner
      *
-     * @ORM\ManyToOne(targetEntity=" TechPromux\BaseBundle\Entity\Owner\ResourceOwner")
+     * @ORM\ManyToOne(targetEntity="TechPromux\BaseBundle\Entity\Owner\ResourceOwner")
      * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=true)
      */
     protected $owner;

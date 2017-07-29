@@ -49,7 +49,7 @@ class VariableApiController extends FOSRestController {
     }
 
     /**
-     * @return object|\ TechPromux\DynamicConfigurationBundle\Manager\UtilDynamicConfigurationManager
+     * @return object|\TechPromux\DynamicConfigurationBundle\Manager\UtilDynamicConfigurationManager
      */
     protected function getUtilDynamicConfigurationManager()
     {
