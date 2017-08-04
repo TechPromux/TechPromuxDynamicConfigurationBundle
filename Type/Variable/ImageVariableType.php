@@ -6,10 +6,10 @@
  * Time: 19:11
  */
 
-namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
+namespace TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 
-use  TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
+use TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
 
 class ImageVariableType implements BaseVariableType
 {

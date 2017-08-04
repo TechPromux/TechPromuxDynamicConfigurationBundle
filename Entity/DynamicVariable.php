@@ -1,9 +1,9 @@
 <?php
 
-namespace  TechPromux\DynamicConfigurationBundle\Entity;
+namespace TechPromux\DynamicConfigurationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use  TechPromux\BaseBundle\Entity\Resource\BaseResource;
+use TechPromux\BaseBundle\Entity\Resource\BaseResource;
 
 /**
  * DynamicVariable
@@ -43,9 +43,9 @@ class DynamicVariable extends BaseResource
     /**
      * @var string
      *
-     * @ORM\Column(name="context", type="string", length=255)
+     * @ORM\Column(name="context_type", type="string", length=255)
      */
-    private $context;
+    private $contextType;
 
     /**
      * @var \Sonata\MediaBundle\Entity\BaseMedia
@@ -55,54 +55,7 @@ class DynamicVariable extends BaseResource
      */
     protected $media;
 
-    /**
-     * @ORM\OneToMany(targetEntity="TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable", mappedBy="variable", cascade={"all"}, orphanRemoval=true)
-     */
-    private $ownerVariables;
-
-    //-------------------------------------------------------------------------------------------------
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ownerVariables = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ownerVariable
-     *
-     * @param \TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
-     *
-     * @return DynamicVariable
-     */
-    public function addOwnerVariable(\TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
-    {
-        $this->ownerVariables[] = $ownerVariable;
-
-        return $this;
-    }
-
-    /**
-     * Remove ownerVariable
-     *
-     * @param \TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable
-     */
-    public function removeOwnerVariable(\TechPromux\DynamicConfigurationBundle\Entity\OwnerVariable $ownerVariable)
-    {
-        $this->ownerVariables->removeElement($ownerVariable);
-    }
-
-    /**
-     * Get ownerVariables
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOwnerVariables()
-    {
-        return $this->ownerVariables;
-    }
+    //-------------------------------------------------------------------------------------
 
     /**
      * Set value
@@ -179,13 +132,13 @@ class DynamicVariable extends BaseResource
     /**
      * Set context
      *
-     * @param string $context
+     * @param string $context_type
      *
      * @return DynamicVariable
      */
-    public function setContext($context)
+    public function setContextType($context_type)
     {
-        $this->context = $context;
+        $this->contextType = $context_type;
 
         return $this;
     }
@@ -195,9 +148,9 @@ class DynamicVariable extends BaseResource
      *
      * @return string
      */
-    public function getContext()
+    public function getContextType()
     {
-        return $this->context;
+        return $this->contextType;
     }
 
     //-----------------------------------------------------------------------------------------------------------
@@ -262,7 +215,7 @@ class DynamicVariable extends BaseResource
         if ($this->getType() == "boolean") {
             return $this->value;
         }
-        $printable_value = json_decode($this->value,true);
+        $printable_value = json_decode($this->value, true);
 
         if (is_array($printable_value))
             return $this->value;

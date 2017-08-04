@@ -1,6 +1,6 @@
 <?php
 
-namespace  TechPromux\DynamicConfigurationBundle\Admin;
+namespace TechPromux\DynamicConfigurationBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -8,10 +8,10 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\CoreBundle\Validator\ErrorElement;
-use  TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable;
-use  TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
-use  TechPromux\DynamicConfigurationBundle\Type\Variable\BaseVariableType;
-use  TechPromux\BaseBundle\Admin\Resource\BaseResourceAdmin;
+use TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable;
+use TechPromux\DynamicConfigurationBundle\Manager\DynamicVariableManager;
+use TechPromux\DynamicConfigurationBundle\Type\Variable\BaseVariableType;
+use TechPromux\BaseBundle\Admin\Resource\BaseResourceAdmin;
 
 class DynamicVariableAdmin extends BaseResourceAdmin
 {
@@ -57,7 +57,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
             ->add('name')
             ->add('title')
             ->add('description')
-            ->add('context')
+            ->add('contextType')
             ->add('value');
     }
 
@@ -71,7 +71,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
             ->addIdentifier('name')
             ->add('title')
             ->add('type')
-            ->add('context')
+            ->add('contextType')
             ->add('printableValue', 'html', array(
                 //'label' => 'Value',
                 'width' => '65',
@@ -117,7 +117,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
             ->add('name', null, array())
             ->add('title', null, array())
             ->add('description', 'textarea', array())
-            ->add('context', 'choice', array(
+            ->add('contextType', 'choice', array(
                 'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getContextTypesChoices(),
                 'multiple' => false, 'expanded' => false, 'required' => true
             ))

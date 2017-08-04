@@ -6,7 +6,7 @@
  * Time: 19:11
  */
 
-namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
+namespace TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 
 class DateVariableType implements BaseVariableType

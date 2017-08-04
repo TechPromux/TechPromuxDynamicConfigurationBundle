@@ -11,21 +11,6 @@ services:
             #- [ setServiceContainer,['@service_container']]
             - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
 
-    techpromux_dynamic_configuration.manager.default_resource_owner:
-        alias: techpromux.manager.default_resource_owner
-
-    techpromux_dynamic_configuration.manager.owner_variable:
-        class:  TechPromux\DynamicConfigurationBundle\Manager\OwnerVariableManager
-        arguments: [~]
-        tags:
-            - { name: techpromux.manager}
-            - { name: techpromux.resource_manager}
-        calls:
-            #- [ setServiceContainer,['@service_container']]
-            - [ setResourceOwnerManager,['@techpromux_dynamic_configuration.manager.default_resource_owner']]
-            - [ setDynamicVariableManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]
-            - [ setUtilDynamicConfigurationManager, ['@techpromux_dynamic_configuration.manager.util_dynamic_configuration']]
-
     techpromux_dynamic_configuration.manager.util_dynamic_configuration:
         class:  TechPromux\DynamicConfigurationBundle\Manager\UtilDynamicConfigurationManager
         arguments: [~]
@@ -34,4 +19,4 @@ services:
         calls:
             #- [ setServiceContainer,['@service_container']]
             - [ setDynamicVariableManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]
-            - [ setOwnerVariableManager,['@techpromux_dynamic_configuration.manager.owner_variable']]
+            #- [ setContextVariableManager,['@techpromux_dynamic_configuration.manager.context_variable']]

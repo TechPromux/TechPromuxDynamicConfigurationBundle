@@ -2,11 +2,6 @@ imports:
     - { resource: 'parameters.yml'}
     - { resource: 'security.yml'}
 
-twig:
-    globals:
-        techpromux_configurator: '@techpromux_dynamic_configuration.manager.util_dynamic_configuration'
-
-
 sonata_media:
     contexts:
         techpromux_dynamic_configuration_media_image:
@@ -31,6 +26,5 @@ sonata_admin:
                 label_catalogue: TechPromuxDynamicConfigurationBundle
                 icon: '<i class="glyphicon glyphicon-cog"></i>'
                 items:
-                    - techpromux_dynamic_configuration.admin.dynamic_configuration
-                    - techpromux_dynamic_configuration.admin.owner_variable
+                    - techpromux_dynamic_configuration.admin.dynamic_variable
 

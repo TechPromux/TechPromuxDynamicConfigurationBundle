@@ -1,6 +1,6 @@
 <?php
 
-namespace  TechPromux\DynamicConfigurationBundle\Type\Variable;
+namespace TechPromux\DynamicConfigurationBundle\Type\Variable;
 
 /**
  * Interface BaseVariableType
