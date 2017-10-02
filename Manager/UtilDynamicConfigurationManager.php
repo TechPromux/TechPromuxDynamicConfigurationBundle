@@ -53,13 +53,14 @@ class UtilDynamicConfigurationManager extends BaseManager
     //---------------------------------------------------------------------------------------------
 
     /**
+     * @param bool $translated
      * @return array
      */
-    public function getContextTypesChoices()
+    public function getContextTypesChoices($translated = false)
     {
         return array(
-            'SYSTEM' => ('SYSTEM'),
-            'SHARED' => ('SHARED'),
+            'SYSTEM' => $translated ? $this->getTranslator()->trans('SYSTEM', array(), $this->getBundleName()) : 'SYSTEM',
+            'SHARED' => $translated ? $this->getTranslator()->trans('SHARED', array(), $this->getBundleName()) : 'SHARED',
         );
     }
 
@@ -86,15 +87,16 @@ class UtilDynamicConfigurationManager extends BaseManager
     }
 
     /**
+     * @param bool $translated
      * @return array
      */
-    public function getVariableTypesChoices()
+    public function getVariableTypesChoices($translated = false)
     {
         $types_choices = array();
 
         foreach ($this->variable_types as $fto) {
             /** @var $fto BaseVariableType */
-            $types_choices[$fto->getId()] = $fto->getId();
+            $types_choices[$fto->getId()] = $translated ? $this->getTranslator()->trans($fto->getId(), array(), $this->getBundleName()) : $fto->getId();
         }
         return $types_choices;
     }

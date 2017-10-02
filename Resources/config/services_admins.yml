@@ -9,7 +9,7 @@ services:
         class:  TechPromux\DynamicConfigurationBundle\Admin\DynamicVariableAdmin
         arguments: [~,  TechPromux\DynamicConfigurationBundle\Entity\DynamicVariable, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: techpromux_dynamic_configuration_admin, label: 'System Variables'}
+            - { name: sonata.admin, manager_type: orm, group: techpromux_dynamic_configuration_admin, label: sidebar.link_dynamic_variable_list}
         calls:
             - [ setTranslationDomain,['TechPromuxDynamicConfigurationBundle']]
             - [ setResourceManager,['@techpromux_dynamic_configuration.manager.dynamic_variable']]

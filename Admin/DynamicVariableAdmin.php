@@ -36,12 +36,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
     public function configureRoutes(\Sonata\AdminBundle\Route\RouteCollection $routes)
     {
         parent::configureRoutes($routes);
-
-        // una sola ruta, indicar format json????
-
         $routes->remove('show');
-        $routes->add('getValue', 'getValue/{code}');
-        $routes->add('getJSONValue', 'getJSONValue/{code}');
     }
 
     /**
@@ -53,11 +48,17 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         parent::configureDatagridFilters($datagridMapper);
 
         $datagridMapper
-            ->add('type')
+            ->add('type', null, array(), 'choice', array(
+                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getVariableTypesChoices(),
+                'translation_domain' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getBundleName()
+            ))
             ->add('name')
             ->add('title')
-            ->add('description')
-            ->add('contextType')
+            //->add('description')
+            ->add('contextType', null, array(), 'choice', array(
+                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getContextTypesChoices(),
+                'translation_domain' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getBundleName()
+            ))
             ->add('value');
     }
 
@@ -68,10 +69,14 @@ class DynamicVariableAdmin extends BaseResourceAdmin
     {
 
         $listMapper
-            ->addIdentifier('name')
+            ->add('name')
             ->add('title')
-            ->add('type')
-            ->add('contextType')
+            ->add('type', 'choice', array(
+                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getVariableTypesChoices(true),
+            ))
+            ->add('contextType', 'choice', array(
+                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getContextTypesChoices(true)
+            ))
             ->add('printableValue', 'html', array(
                 //'label' => 'Value',
                 'width' => '65',
@@ -89,7 +94,6 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         parent::configureListFields($listMapper);
 
         $listMapper->add('_action', 'actions', array(
-            'label' => ('Actions'),
             'row_align' => 'right',
             'header_style' => 'width: 90px',
             'actions' => array(
@@ -117,10 +121,6 @@ class DynamicVariableAdmin extends BaseResourceAdmin
             ->add('name', null, array())
             ->add('title', null, array())
             ->add('description', 'textarea', array())
-            ->add('contextType', 'choice', array(
-                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getContextTypesChoices(),
-                'multiple' => false, 'expanded' => false, 'required' => true
-            ))
             ->end();
 
         $field_options_type = null;
@@ -133,28 +133,39 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         }
 
         if ($this->getSubject() && $this->getSubject()->getId()) {
-
-            if ($field_options_type->getHasSettings()) {
-                $formMapper->with('form.group.options.label', array('class' => 'col-md-4'))
-                    ->add('settings', $field_options_type->getSettingsType(),
-                        array_merge($field_options_type->getSettingsOptions(), array('required' => false)))
-                    ->end();
-            }
-        }
-
-        if ($this->getSubject() && $this->getSubject()->getId() && $field_options_type->getHasSettings()) {
-            $formMapper->with('form.group.value.label', array('class' => 'col-md-4'));
+            $formMapper->with('form.group.options.label', array('class' => 'col-md-4'));
         } else {
-            $formMapper->with('form.group.value.label', array('class' => 'col-md-8'));
-        }
+            $formMapper->with('form.group.options.label', array('class' => 'col-md-8'));
 
-        $formMapper->add('type', ($this->getSubject() && $this->getSubject()->getId()) ? 'text' : 'choice', ($this->getSubject() && $this->getSubject()->getId()) ?
-            array('disabled' => true) :
-            array('multiple' => false, 'expanded' => true, 'required' => true, 'data' => 'text', 'disabled' => false,
-                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getVariableTypesChoices())
+        }
+        $formMapper->add('contextType', 'choice', array(
+            'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getContextTypesChoices(),
+            'multiple' => false, 'expanded' => false, 'required' => true,
+            'translation_domain' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getBundleName()
+        ));
+
+        $formMapper->add('type', 'choice',
+            array(
+                'disabled' => ($this->getSubject() && $this->getSubject()->getId()) ? true : false,
+                'multiple' => false,
+                'expanded' => ($this->getSubject() && $this->getSubject()->getId()) ? false : true,
+                'required' => true,
+                'choices' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getVariableTypesChoices(),
+                'translation_domain' => $this->getResourceManager()->getUtilDynamicConfigurationManager()->getBundleName()
+            )
         );
 
+        if ($this->getSubject() && $this->getSubject()->getId() && $field_options_type->getHasSettings()) {
+            $formMapper->
+            add('settings', $field_options_type->getSettingsType(),
+                array_merge($field_options_type->getSettingsOptions(), array('required' => false)));
+
+        }
+
+        $formMapper->end();
+
         if ($this->getSubject() && $this->getSubject()->getId()) {
+            $formMapper->with('form.group.value.label', array('class' => 'col-md-4'));
 
             if (!$field_options_type->getHasSettings()) {
                 $formMapper->add('customValue', $field_options_type->getValueType(),
@@ -171,9 +182,8 @@ class DynamicVariableAdmin extends BaseResourceAdmin
                             )));
                 }
             }
+            $formMapper->end();
         }
-
-        $formMapper->end();
 
 
     }

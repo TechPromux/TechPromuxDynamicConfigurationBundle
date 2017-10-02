@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="TechPromuxDynamicConfigurationBundle.en.xliff">
+        <body>
+            <trans-unit id="techpromux_dynamic_configuration_group_label">
+                <source>techpromux_dynamic_configuration_group_label</source>
+                <target><![CDATA[Dynamic Configurations]]></target>
+            </trans-unit>
+            <trans-unit id="sidebar.link_dynamic_variable_list">
+                <source>sidebar.link_dynamic_variable_list</source>
+                <target><![CDATA[Configuration Variables]]></target>
+            </trans-unit>
+            <trans-unit id="sidebar.link_context_variable_list">
+                <source>sidebar.link_context_variable_list</source>
+                <target><![CDATA[Custom Variables]]></target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_dynamic_variable_list">
+                <source>breadcrumb.link_dynamic_variable_list</source>
+                <target><![CDATA[Configuration Variables]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_name">
+                <source>list.label_name</source>
+                <target><![CDATA[Name]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_title">
+                <source>list.label_title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_description">
+                <source>list.label_description</source>
+                <target><![CDATA[Description]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_type">
+                <source>list.label_type</source>
+                <target><![CDATA[Data Type]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_context_type">
+                <source>list.label_context_type</source>
+                <target><![CDATA[Type]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_printable_value">
+                <source>list.label_printable_value</source>
+                <target><![CDATA[Value]]></target>
+            </trans-unit>
+            <trans-unit id="list.label__action">
+                <source>list.label__action</source>
+                <target><![CDATA[Actions]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_type">
+                <source>filter.label_type</source>
+                <target><![CDATA[Data Type]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_name">
+                <source>filter.label_name</source>
+                <target><![CDATA[Name]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_title">
+                <source>filter.label_title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_description">
+                <source>filter.label_description</source>
+                <target><![CDATA[Description]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_context_type">
+                <source>filter.label_context_type</source>
+                <target><![CDATA[Type]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_value">
+                <source>filter.label_value</source>
+                <target><![CDATA[Value]]></target>
+            </trans-unit>
+            <trans-unit id="SYSTEM">
+                <source>SYSTEM</source>
+                <target><![CDATA[System]]></target>
+            </trans-unit>
+            <trans-unit id="SHARED">
+                <source>SHARED</source>
+                <target><![CDATA[Shared]]></target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>text</source>
+                <target><![CDATA[Text]]></target>
+            </trans-unit>
+            <trans-unit id="textarea">
+                <source>textarea</source>
+                <target><![CDATA[Textarea]]></target>
+            </trans-unit>
+            <trans-unit id="textarea-html">
+                <source>textarea-html</source>
+                <target><![CDATA[Textarea Html]]></target>
+            </trans-unit>
+            <trans-unit id="email">
+                <source>email</source>
+                <target><![CDATA[Email]]></target>
+            </trans-unit>
+            <trans-unit id="integer">
+                <source>integer</source>
+                <target><![CDATA[Integer]]></target>
+            </trans-unit>
+            <trans-unit id="number">
+                <source>number</source>
+                <target><![CDATA[Number]]></target>
+            </trans-unit>
+            <trans-unit id="boolean">
+                <source>boolean</source>
+                <target><![CDATA[Boolean]]></target>
+            </trans-unit>
+            <trans-unit id="url">
+                <source>url</source>
+                <target><![CDATA[Url]]></target>
+            </trans-unit>
+            <trans-unit id="color-rgb">
+                <source>color-rgb</source>
+                <target><![CDATA[Color (RGB)]]></target>
+            </trans-unit>
+            <trans-unit id="color-rgba">
+                <source>color-rgba</source>
+                <target><![CDATA[Color (RGBA)]]></target>
+            </trans-unit>
+            <trans-unit id="date">
+                <source>date</source>
+                <target><![CDATA[Date]]></target>
+            </trans-unit>
+            <trans-unit id="time">
+                <source>time</source>
+                <target><![CDATA[Time]]></target>
+            </trans-unit>
+            <trans-unit id="datetime">
+                <source>datetime</source>
+                <target><![CDATA[DateTime]]></target>
+            </trans-unit>
+            <trans-unit id="country">
+                <source>country</source>
+                <target><![CDATA[Country]]></target>
+            </trans-unit>
+            <trans-unit id="language">
+                <source>language</source>
+                <target><![CDATA[Language]]></target>
+            </trans-unit>
+            <trans-unit id="locale">
+                <source>locale</source>
+                <target><![CDATA[Locale]]></target>
+            </trans-unit>
+            <trans-unit id="timezone">
+                <source>timezone</source>
+                <target><![CDATA[Timezone]]></target>
+            </trans-unit>
+            <trans-unit id="image">
+                <source>image</source>
+                <target><![CDATA[Image]]></target>
+            </trans-unit>
+            <trans-unit id="choice-select-same-key-value">
+                <source>choice-select-same-key-value</source>
+                <target><![CDATA[Select (same key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="choice-select-different-key-value">
+                <source>choice-select-different-key-value</source>
+                <target><![CDATA[Select (different key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="choice-radio-same-key-value">
+                <source>choice-radio-same-key-value</source>
+                <target><![CDATA[Radio (same key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="choice-radio-different-key-value">
+                <source>choice-radio-different-key-value</source>
+                <target><![CDATA[Radio (different key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="choice-checkbox-same-key-value">
+                <source>choice-checkbox-same-key-value</source>
+                <target><![CDATA[Checkbox (same key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="choice-checkbox-different-key-value">
+                <source>choice-checkbox-different-key-value</source>
+                <target><![CDATA[Checkbox (different key-value)]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-text">
+                <source>multiple-text</source>
+                <target><![CDATA[Multiple Text]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-textarea">
+                <source>multiple-textarea</source>
+                <target><![CDATA[Multiple Textarea]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-textarea-html">
+                <source>multiple-textarea-html</source>
+                <target><![CDATA[Multiple Textarea Html]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-email">
+                <source>multiple-email</source>
+                <target><![CDATA[Multiple Email]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-integer">
+                <source>multiple-integer</source>
+                <target><![CDATA[Multiple Integer]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-number">
+                <source>multiple-number</source>
+                <target><![CDATA[Multiple Number]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-boolean">
+                <source>multiple-boolean</source>
+                <target><![CDATA[Multiple Boolean]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-url">
+                <source>multiple-url</source>
+                <target><![CDATA[Multiple Url]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-color-rgb">
+                <source>multiple-color-rgb</source>
+                <target><![CDATA[Multiple Color (RGB)]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-color-rgba">
+                <source>multiple-color-rgba</source>
+                <target><![CDATA[Multiple Color (RGBA)]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-date">
+                <source>multiple-date</source>
+                <target><![CDATA[Multiple Date]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-time">
+                <source>multiple-time</source>
+                <target><![CDATA[Multiple Time]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-datetime">
+                <source>multiple-datetime</source>
+                <target><![CDATA[Multiple DateTime]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-country">
+                <source>multiple-country</source>
+                <target><![CDATA[Multiple Country]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-language">
+                <source>multiple-language</source>
+                <target><![CDATA[Multiple Language]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-locale">
+                <source>multiple-locale</source>
+                <target><![CDATA[Multiple Locale]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-timezone">
+                <source>multiple-timezone</source>
+                <target><![CDATA[Multiple Timezone]]></target>
+            </trans-unit>
+            <trans-unit id="multiple-key-value">
+                <source>multiple-key-value</source>
+                <target><![CDATA[Multiple Key-Value]]></target>
+            </trans-unit>
+            <trans-unit id="form.group.definition.label">
+                <source>form.group.definition.label</source>
+                <target><![CDATA[Variable Definition]]></target>
+            </trans-unit>
+            <trans-unit id="form.group.options.label">
+                <source>form.group.options.label</source>
+                <target><![CDATA[Value Settings]]></target>
+            </trans-unit>
+            <trans-unit id="form.group.value.label">
+                <source>form.group.value.label</source>
+                <target><![CDATA[Value Data]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_name">
+                <source>form.label_name</source>
+                <target><![CDATA[Name]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_title">
+                <source>form.label_title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_description">
+                <source>form.label_description</source>
+                <target><![CDATA[Description]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_context_type">
+                <source>form.label_context_type</source>
+                <target><![CDATA[Type]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_type">
+                <source>form.label_type</source>
+                <target><![CDATA[Data type]]></target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_dynamic_variable_create">
+                <source>breadcrumb.link_dynamic_variable_create</source>
+                <target><![CDATA[Create]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_custom_value">
+                <source>form.label_custom_value</source>
+                <target><![CDATA[Value]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_settings">
+                <source>form.label_settings</source>
+                <target><![CDATA[Default Values Settings]]></target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_context_variable_list">
+                <source>breadcrumb.link_context_variable_list</source>
+                <target><![CDATA[Custom Variables]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_variable_name">
+                <source>list.label_variable_name</source>
+                <target><![CDATA[Name]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_variable_title">
+                <source>list.label_variable_title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="list.label_variable_type">
+                <source>list.label_variable_type</source>
+                <target><![CDATA[Data Type]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_variable_name">
+                <source>filter.label_variable_name</source>
+                <target><![CDATA[Name]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_variable_title">
+                <source>filter.label_variable_title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="filter.label_variable_type">
+                <source>filter.label_variable_type</source>
+                <target><![CDATA[Data Type]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_variable__title">
+                <source>form.label_variable__title</source>
+                <target><![CDATA[Title]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_variable__description">
+                <source>form.label_variable__description</source>
+                <target><![CDATA[Description]]></target>
+            </trans-unit>
+            <trans-unit id="form.label_reset_value">
+                <source>form.label_reset_value</source>
+                <target><![CDATA[Reset to Default Value]]></target>
+            </trans-unit>
+            <trans-unit id="">
+                <source></source>
+                <target><![CDATA[]]></target>
+            </trans-unit>
+
+            <!--
+                <trans-unit id="">
+                    <source></source>
+                    <target><![CDATA[]]></target>
+                </trans-unit>
+            -->
+        </body>
+    </file>
+</xliff>

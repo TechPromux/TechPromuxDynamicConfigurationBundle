@@ -216,6 +216,7 @@ class DynamicVariable extends BaseResource
             return $this->value;
         }
         $printable_value = json_decode($this->value, true);
+        //$printable_value = json_decode($this->value, true, 512, JSON_PRETTY_PRINT | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_OBJECT_AS_ARRAY);
 
         if (is_array($printable_value))
             return $this->value;

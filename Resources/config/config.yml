@@ -22,7 +22,7 @@ sonata_admin:
 
         groups:
             techpromux_dynamic_configuration_admin:
-                label: Dynamic Configurations
+                label: techpromux_dynamic_configuration_group_label
                 label_catalogue: TechPromuxDynamicConfigurationBundle
                 icon: '<i class="glyphicon glyphicon-cog"></i>'
                 items:

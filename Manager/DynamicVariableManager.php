@@ -94,7 +94,7 @@ class DynamicVariableManager extends BaseResourceManager
     protected $util_dynamic_configuration_manager;
 
     /**
-     * @return mixed
+     * @return UtilDynamicConfigurationManager
      */
     public function getUtilDynamicConfigurationManager()
     {
@@ -102,7 +102,7 @@ class DynamicVariableManager extends BaseResourceManager
     }
 
     /**
-     * @param mixed $util_dynamic_configuration_manager
+     * @param UtilDynamicConfigurationManager $util_dynamic_configuration_manager
      * @return DynamicVariableManager
      */
     public function setUtilDynamicConfigurationManager($util_dynamic_configuration_manager)
