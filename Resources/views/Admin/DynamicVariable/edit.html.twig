@@ -17,7 +17,7 @@
     {{ parent() }}
     <script>
 
-        function init_inner_items_{{ form.vars.id }}(container, initial=true) {
+        function init_inner_items_{{ form.vars.id | replace({'-':'_'}) }}(container, initial=true) {
 
             var labels = $(container).find('label[data-ctype-modify="parent"]');
 
@@ -56,7 +56,7 @@
             $(container).find('input.color-picker-rgba' + (initial ? '' : ':last')).parent().addClass('input-group colorpicker-component').append('<span class="input-group-addon" style="background-color: #eee;"><i></i></span>').colorpicker({format: 'rgba'});
 
             var class_value = $(container).find('ul.radio-horizontal-modify-radio-content').attr('data-ctype-modify-radio-content-addclass');
-            $.each($(container).find('ul.radio-horizontal-modify-radio-content div.radio'), function(id, el){
+            $.each($(container).find('ul.radio-horizontal-modify-radio-content div.radio'), function (id, el) {
                 $(el).addClass(class_value);
             });
         }
@@ -69,7 +69,7 @@
 
         $(document).on('sonata-collection-item-added', '#sonata-ba-field-container-{{ form.vars.id }}_settings', function () {
 
-            init_inner_items_{{ form.vars.id }}(this, false);
+            init_inner_items_{{ form.vars.id | replace({'-':'_'}) }}(this, false);
 
         });
 
@@ -80,7 +80,7 @@
                 $('#{{ form.vars.id }}_type').children().each(function (id, el) {
                     $(el).find('label').css({'padding-left': '0px'});
                     var text = $(el).find('span').html();
-                    if (text.length > 25)
+                    if (text != undefined && text != null && text.length > 25)
                         $(el).addClass('col-md-6 col-sm-6');
                     else
                         $(el).addClass('col-md-4 col-sm-4');
@@ -90,8 +90,13 @@
             $('#{{ form.vars.id }}_customValue').addClass('row').css({'margin-left': '0px', 'margin-right': '0px'});
             $('#sonata-ba-field-container-{{ form.vars.id }}_customValue img.media-object').parent().parent().removeClass('col-lg-9').addClass('col-lg-12');
 
-            init_inner_items_{{ form.vars.id }}($('#sonata-ba-field-container-{{ form.vars.id }}_customValue'), true);
-            init_inner_items_{{ form.vars.id }}($('#sonata-ba-field-container-{{ form.vars.id }}_settings'), true);
+            init_inner_items_{{ form.vars.id | replace({'-':'_'}) }}($('#sonata-ba-field-container-{{ form.vars.id }}_customValue'), true);
+            init_inner_items_{{ form.vars.id | replace({'-':'_'}) }}($('#sonata-ba-field-container-{{ form.vars.id }}_settings'), true);
+
+            {% if (object.id is null) %}
+            $('#sonata-ba-field-container-{{ form.vars.id }}_contextType').addClass('col-md-3 col-xs-6');
+            $('#sonata-ba-field-container-{{ form.vars.id }}_type').addClass('col-xs-12 col-md-12');
+            {% endif %}
         });
     </script>
 {% endblock javascripts %}

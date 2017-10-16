@@ -18,6 +18,10 @@
                 <source>breadcrumb.link_dynamic_variable_list</source>
                 <target><![CDATA[Configuration Variables]]></target>
             </trans-unit>
+            <trans-unit id="breadcrumb.link_dynamic_variable_delete">
+                <source>breadcrumb.link_dynamic_variable_delete</source>
+                <target><![CDATA[Delete]]></target>
+            </trans-unit>
             <trans-unit id="list.label_name">
                 <source>list.label_name</source>
                 <target><![CDATA[Name]]></target>
@@ -329,6 +333,14 @@
             <trans-unit id="form.label_reset_value">
                 <source>form.label_reset_value</source>
                 <target><![CDATA[Reset to Default Value]]></target>
+            </trans-unit>
+            <trans-unit id="No">
+                <source>No</source>
+                <target><![CDATA[No]]></target>
+            </trans-unit>
+            <trans-unit id="Yes">
+                <source>Yes</source>
+                <target><![CDATA[Yes]]></target>
             </trans-unit>
             <trans-unit id="">
                 <source></source>

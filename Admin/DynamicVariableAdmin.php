@@ -119,8 +119,12 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         $formMapper
             ->with('form.group.definition.label', array('class' => 'col-md-4'))
             ->add('name', null, array())
-            ->add('title', null, array())
-            ->add('description', 'textarea', array())
+            ->add('title', null, array(
+                'required' => true
+            ))
+            //->add('description', 'textarea', array(
+            //    'required' => false
+            //))
             ->end();
 
         $field_options_type = null;
@@ -133,7 +137,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         }
 
         if ($this->getSubject() && $this->getSubject()->getId()) {
-            $formMapper->with('form.group.options.label', array('class' => 'col-md-4'));
+            $formMapper->with('form.group.options.label', array('class' => 'col-md-3'));
         } else {
             $formMapper->with('form.group.options.label', array('class' => 'col-md-8'));
 
@@ -165,7 +169,7 @@ class DynamicVariableAdmin extends BaseResourceAdmin
         $formMapper->end();
 
         if ($this->getSubject() && $this->getSubject()->getId()) {
-            $formMapper->with('form.group.value.label', array('class' => 'col-md-4'));
+            $formMapper->with('form.group.value.label', array('class' => 'col-md-5'));
 
             if (!$field_options_type->getHasSettings()) {
                 $formMapper->add('customValue', $field_options_type->getValueType(),
@@ -188,16 +192,11 @@ class DynamicVariableAdmin extends BaseResourceAdmin
 
     }
 
-    public function toString($object)
-    {
-        return $object->getName();
-    }
-
     public function getTemplate($name)
     {
         switch ($name) {
             case 'base_list_field':
-                return 'TechPromuxDynamicConfigurationBundle:Admin:CRUD/base_list_field.html.twig';
+                return $this->getResourceManager()->getBundleName() . ':Admin:CRUD/base_list_field.html.twig';
         }
         return parent::getTemplate($name);
     }
